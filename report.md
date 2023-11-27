@@ -13,35 +13,24 @@
    1.5. [Статическая маршрутизация сети](#part-5-статическая-маршрутизация-сети) \
    1.6. [Динамическая настройка IP с помощью DHCP](#part-6-динамическая-настройка-ip-с-помощью-dhcp) \
    1.7. [NAT](#part-7-nat) \
-   1.8. [Допополнительно. Знакомство с SSH Tunnels](#part-8-дополнительно-знакомство-с-ssh-tunnels)
-
-## Chapter I
-
-В качестве результата работы должен быть предоставлен отчет по выполненным задачам. В каждой части задания указано, что должно быть помещено в отчёт, после её выполнения. Это могут быть ответы на вопросы, скриншоты и т.д.
-- В репозиторий, в папку src, должен быть загружен отчёт с расширением .md.
-- В отчёте должны быть выделены все части задания, как заголовки 2-го уровня.
-- В рамках одной части задания всё, что помещается в отчёт, должно быть оформлено в виде списка.
-- Каждый скриншот в отчёте должен быть кратко подписан (что показано на скриншоте).
-- Все скриншоты обрезаны так, чтобы была видна только нужная часть экрана.
-- На одном скриншоте допускается отображение сразу нескольких пунктов задания, но они все должны быть описаны в подписи к скриншоту.
-- На все виртуальные машины, созданные в процессе выполнения задания, устанавливать **Ubuntu 20.04 Server LTS**
+   1.8. [Знакомство с SSH Tunnels](#part-8-знакомство-с-ssh-tunnels)
 
 ## Part 1. Инструмент **ipcalc**
 
 #### 1.1. Сети и маски
 ##### Определить и записать в отчёт:
 1) Адрес сети 192.167.38.54/13
- ![part5_network](SS/part1_1_1.png)
+ ![part5_network](src/SS/part1_1_1.png)
 2) перевод маски *255.255.255.0* в префиксную и двоичную запись, */15* в обычную и двоичную, *11111111.11111111.11111111.11110000* в обычную и префиксную
-![part5_network](SS/part1_1_2.png)
-![part5_network](SS/part1_1_3.png)
-![part5_network](SS/part1_1_4.png)
+![part5_network](src/SS/part1_1_2.png)
+![part5_network](src/SS/part1_1_3.png)
+![part5_network](src/SS/part1_1_4.png)
 
 3) минимальный и максимальный хост в сети *12.167.38.4* при масках: */8*, *11111111.11111111.00000000.00000000*, *255.255.254.0* и */4*
-   ![part5_network](SS/part1_3_1.png)
-  ![part5_network](SS/part1_3_2.png)
-  ![part5_network](SS/part1_3_3.png)
-  ![part5_network](SS/part1_3_4.png)
+   ![part5_network](src/SS/part1_3_1.png)
+  ![part5_network](src/SS/part1_3_2.png)
+  ![part5_network](src/SS/part1_3_3.png)
+  ![part5_network](src/SS/part1_3_4.png)
    
 
 #### 1.2. localhost
@@ -75,45 +64,45 @@
 
 ##### С помощью команды `ip a` посмотреть существующие сетевые интерфейсы
 WS-1:
-![part5_network](SS/part2_1.png)
+![part5_network](src/SS/part2_1.png)
 WS-2:
-![part5_network](SS/part2_2.png)
+![part5_network](src/SS/part2_2.png)
 ##### Описать сетевой интерфейс, соответствующий внутренней сети, на обеих машинах и задать следующие адреса и маски: ws1 - *192.168.100.10*, маска */16*, ws2 - *172.24.116.8*, маска */12*
 
 ##### Выполнить команду `netplan apply` для перезапуска сервиса сети
 
 
 WS-1:
-![part5_network](SS/part2_3.png)
+![part5_network](src/SS/part2_3.png)
 WS-2:
-![part5_network](SS/part2_4.png)
+![part5_network](src/SS/part2_4.png)
 
 
 #### 2.1. Добавление статического маршрута вручную
 ##### Добавить статический маршрут от одной машины до другой и обратно при помощи команды вида `ip r add`
 * WS-1:
-![part5_network](SS/part2_5.png)
+![part5_network](src/SS/part2_5.png)
 * WS-2:
-![part5_network](SS/part2_6.png)
+![part5_network](src/SS/part2_6.png)
 ##### Пропинговать соединение между машинами
 * С WS-1 пингую WS-2:
-![part5_network](SS/part2_7.png)
+![part5_network](src/SS/part2_7.png)
 * С WS-2 пингую WS-1:
-![part5_network](SS/part2_8.png)
+![part5_network](src/SS/part2_8.png)
 
 
 #### 2.2. Добавление статического маршрута с сохранением
 ##### Перезапустить машины
 ##### Добавить статический маршрут от одной машины до другой с помощью файла *etc/netplan/00-installer-config.yaml*
 * WS-1:
-![part5_network](SS/part2_9.png)
+![part5_network](src/SS/part2_9.png)
 * WS-2:
-![part5_network](SS/part2_10.png)
+![part5_network](src/SS/part2_10.png)
 ##### Пропинговать соединение между машинами
 * WS-1:
-![part5_network](SS/part2_11.png)
+![part5_network](src/SS/part2_11.png)
 * WS-2:
-![part5_network](SS/part2_12.png)
+![part5_network](src/SS/part2_12.png)
 
 ## Part 3. Утилита **iperf3**
 
@@ -126,9 +115,9 @@ WS-2:
 ##### Измерить скорость соединения между ws1 и ws2
 iperf3 -c "ip-address reciver" - чтобы отправить пакеты для проверки скорости
 WS-1:
-![part5_network](SS/part2_13.png)
+![part5_network](src/SS/part2_13.png)
 WS-2:
-![part5_network](SS/part2_14.png)
+![part5_network](src/SS/part2_14.png)
 
 ## Part 4. Сетевой экран
 
@@ -149,23 +138,23 @@ iptables -X
 ##### 5) разрешить *echo reply* (машина должна "пинговаться")
 * Содержание файлов firewall.sh
   * WS-1:
-![part5_network](SS/part4_1.png)
+![part5_network](src/SS/part4_1.png)
   * WS-2:
-![part5_network](SS/part4_2.png)
+![part5_network](src/SS/part4_2.png)
 ##### Запустить файлы на обеих машинах командами `chmod +x /etc/firewall.sh` и `/etc/firewall.sh`
 
 * Запуск скриптов:
   * WS-1:
- ![part5_network](SS/part4_3.png)
+ ![part5_network](src/SS/part4_3.png)
   * WS-2:
-  ![part5_network](SS/part4_4.png)
+  ![part5_network](src/SS/part4_4.png)
 
 * Разница в стратегиях заключается в том, что изначально в машине ws-1 мы сначала разрешаем, а после запрещаем вывод ping'a. В машине ws2 всё ровным счетом наоборот.
 
 #### 4.2. Утилита **nmap**
 ##### Командой **ping** найти машину, которая не "пингуется", после чего утилитой **nmap** показать, что хост машины запущен
 * Пробуем пингануть и пользуемся nmap, чтобы убедиться, что вторая машина включена
-![part5_network](SS/part4_5.png)
+![part5_network](src/SS/part4_5.png)
 
 ## Part 5. Статическая маршрутизация сети
 
@@ -173,75 +162,76 @@ iptables -X
 
 #### 5.1. Настройка адресов машин
 ##### Настроить конфигурации машин в *etc/netplan/00-installer-config.yaml* согласно сети на рисунке.
+ ![part5_network](src/SS/part5_network.png)
 * Собранная топология, конфиги устройств
   * R1:
- ![part5_network](SS/part5_r1.png)
+ ![part5_network](src/SS/part5_r1.png)
   * R2:
-![part5_network](SS/part5_r2.png)
+![part5_network](src/SS/part5_r2.png)
   * WS11:
-![part5_network](SS/part5_ws11.png)
+![part5_network](src/SS/part5_ws11.png)
   * WS21:
-![part5_network](SS/part5_ws21.png)
+![part5_network](src/SS/part5_ws21.png)
   * WS22:
-![part5_network](SS/part5_ws22.png)
+![part5_network](src/SS/part5_ws22.png)
 ##### Перезапустить сервис сети. Если ошибок нет, то командой `ip -4 a` проверить, что адрес машины задан верно. Также пропинговать ws22 с ws21. Аналогично пропинговать r1 с ws11.
 * ip -4 a для машин:
   * R1:
-![part5_network](SS/part5_r1_1.png)
+![part5_network](src/SS/part5_r1_1.png)
   * R2:
-![part5_network](SS/part5_r2_1.png)
+![part5_network](src/SS/part5_r2_1.png)
   * WS11:
-![part5_network](SS/part5_ws11_1.png)
+![part5_network](src/SS/part5_ws11_1.png)
   * WS21:
-![part5_network](SS/part5_ws21_1.png)
+![part5_network](src/SS/part5_ws21_1.png)
   * WS22:
-![part5_network](SS/part5_ws22_1.png)
+![part5_network](src/SS/part5_ws22_1.png)
 #### 5.2. Включение переадресации IP-адресов.
 ##### Для включения переадресации IP, выполнил команду на роутерах:
 * `sysctl -w net.ipv4.ip_forward=1`
 
-  ![part5_network](SS/part5_sysctl_1.png)
+  ![part5_network](src/SS/part5_sysctl_1.png)
 ##### Откройте файл */etc/sysctl.conf* и добавьте в него следующую строку:
-* `net.ipv4.ip_forward = 1`(Важно перегружать службу)
-  ![part5_network](SS/part5_sysctl_2.png)
+* `net.ipv4.ip_forward = 1 (Важно перегружать службу)
+  ![part5_network](src/SS/part5_sysctl_2.png)
 
 #### 5.3. Установка маршрута по-умолчанию
 
 ##### Настроить маршрут по-умолчанию (шлюз) для рабочих станций. Для этого добавить `default` перед IP роутера в файле конфигураций
 * ws11:
-  ![part5_network](SS/part5_5_3_1.png)
+  ![part5_network](src/SS/part5_5_3_1.png)
 * ws21:
-   ![part5_network](SS/part5_5_3_2.png)
+   ![part5_network](src/SS/part5_5_3_2.png)
 * ws22:
-  ![part5_network](SS/part5_5_3_3.png)
+  ![part5_network](src/SS/part5_5_3_3.png)
 ##### Вызвать `ip r` и показать, что добавился маршрут в таблицу маршрутизации
 * ws11:
-  ![part5_network](SS/part5_5_3_r_1.png)
+  ![part5_network](src/SS/part5_5_3_r_1.png)
 * ws21:
-![part5_network](SS/part5_5_3_r_2.png)
+  ![part5_network](src/SS/part5_5_3_r_2.png)
 * ws22:
-  ![part5_network](SS/part5_5_3_r_3.png)
+  ![part5_network](src/SS/part5_5_3_r_3.png)
 
 ##### Пропинговать с ws11 роутер r2 и показать на r2, что пинг доходит. Для этого использовать команду:
 * Пинганул с ws11 до r2, запустил на r `tcpdump -tn -i eth1`
-![part5_network](SS/part5_5_3_ping_ws1_to_r2.png)
+![part5_network](src/SS/part5_5_3_ping_ws1_to_r2.png)
 
 #### 5.4. Добавление статических маршрутов
-* Добавил статические маршруты в сетки
+* Добавил статические маршруты в сеть:
   * r-1:
-![part5_network](SS/part5_5_4_1.png)
+![part5_network](src/SS/part5_5_4_1.png)
   * r-2:
-![part5_network](SS/part5_5_4_2.png)
+![part5_network](src/SS/part5_5_4_2.png)
 
 * Вызвал `ip r` на обоих роутерах.
   * r-1
-![part5_network](SS/part5_5_4_3.png)
+![part5_network](src/SS/part5_5_4_3.png)
   * r-2:
-![part5_network](SS/part5_5_4_4.png)
+![part5_network](src/SS/part5_5_4_4.png)
 
 * Запустил команды на ws11:
   * `ip r list 10.10.0.0/18` и `ip r list 0.0.0.0/0`
-  ![part5_network](SS/part5_5_4_5.png)
+  ![part5_network](src/SS/part5_5_4_5.png)
 
 
 * В первом случае мы смотрим на путь до сети в которой ws11 уже находится и поэтому выводится просто что мы в ней и она доступна по интерфейсу enp0s3, во втором случае мы запрашиваем список адресов по умолчанию(gateway) 
@@ -250,87 +240,72 @@ iptables -X
 
 * Запустил на r1 команду дампа:
 `tcpdump -tnv -i enp0s3`
-![part5_network](SS/part5_5_5_2.png)
+![part5_network](src/SS/part5_5_5_2.png)
 * traceroute:
-![part5_network](SS/part5_5_5_1.png)
+![part5_network](src/SS/part5_5_5_1.png)
 
 * Путь строиться от узла к узлу до того момента, пока не будет достигнута конечная точка. Каждый пакет проходит на своем пути определенное количество узлов, пока достигнет своей цели. На каждом узле добавляется счетчик, который отслеживает количество пройденых узлов.
 
 #### 5.6. Использование протокола **ICMP** при маршрутизации
 
 * `ping -c 1 10.30.0.111` на ws-11:
-![part5_network](SS/part5_6_2.png)
+![part5_network](src/SS/part5_6_2.png)
 * tcpdump на r1:
-![part5_network](SS/part5_6_1.png)
+![part5_network](src/SS/part5_6_1.png)
 
 
 ## Part 6. Динамическая настройка IP с помощью **DHCP**
 
 * Для r2 настроил в файле */etc/dhcp/dhcpd.conf* конфигурацию службы DHCP: указал адрес маршрутизатора по-умолчанию, DNS-сервер и адрес внутренней сети. 
-  ![part5_network](SS/part6_1.png)
+  ![part5_network](src/SS/part6_1.png)
 * в файле *resolv.conf* прописать `nameserver 8.8.8.8.`
-  ![part5_network](SS/part6_2.png)
+  ![part5_network](src/SS/part6_2.png)
 * Перезагрузил службу **DHCP** командой `systemctl restart isc-dhcp-server`. 
-    ![part5_network](SS/part6_3.png)
+    ![part5_network](src/SS/part6_3.png)
 * Машину ws21 перезагрузил при помощи `reboot` и через `ip a` показал, что она получила адрес. 
-     ![part5_network](SS/part6_4.png)
+     ![part5_network](src/SS/part6_4.png)
 * Пропинговал ws22 с ws21.
-       ![part5_network](SS/part6_5.png)
+       ![part5_network](src/SS/part6_5.png)
 
 * Указал MAC адрес у ws11 `macaddress: 10:10:10:10:10:BA`(на виртуалке тоже необходимо это делать) и установил `dhcp4: true`
-         ![part5_network](SS/part6_6.png)
+         ![part5_network](src/SS/part6_6.png)
 
 * Настройка r1 по аналогии с r2:
-           ![part5_network](SS/part6_7.png)
+           ![part5_network](src/SS/part6_7.png)
 * Назначенный ip-адрес на ws11:
-           ![part5_network](SS/part6_8.png)
+           ![part5_network](src/SS/part6_8.png)
 ##### Запросить с ws21 обновление ip адреса
 * До:
-  ![part5_network](SS/part6_9.png)
+  ![part5_network](src/SS/part6_9.png)
 * Вызов команды для смены ip:
-    ![part5_network](SS/part6_10.png)
+    ![part5_network](src/SS/part6_10.png)
 * После применения команды и перезагрузки:
-    ![part5_network](SS/part6_11.png)
+    ![part5_network](src/SS/part6_11.png)
 
 * Использовал команду `dhcpclient -r -v enp0s3`
 Стерли предыдущий ip, назначили новый на интерфейс enp0s3
 
 ## Part 7. **NAT**
 * В файле */etc/apache2/ports.conf* на ws22 и r1 измениk строку `Listen 80` на `Listen 0.0.0.0:80`
-![part5_network](SS/part7_1.png)
+![part5_network](src/SS/part7_1.png)
 * Запустить веб-сервер Apache командой `service apache2 start` на ws22 и r1
-![part5_network](SS/part7_2_1.png)
+![part5_network](src/SS/part7_2_1.png)
 
 * Добавил в фаервол, созданный по аналогии с фаерволом из Части 4, на r2 следующие правила:
   * Удаление правил в таблице filter - `iptables -F`
   * Удаление правил в таблице "NAT" - `iptables -F -t nat`
   * Отбрасывать все маршрутизируемые пакеты - `iptables --policy FORWARD DROP`
-![part5_network](SS/part7_5.png)
+![part5_network](src/SS/part7_5.png)
  
 * Добавил в файл ещё одно правило:
   * Разрешил маршрутизацию всех пакетов протокола **ICMP**. Проверил  соединение между ws22 и r1 командой `ping`
-![part5_network](SS/part7_6.png)
+![part5_network](src/SS/part7_6.png)
 
 * Итоговый файл по пути /etc/firewall.sh
-  ![part5_network](SS/part7_7.png)
+  ![part5_network](src/SS/part7_7.png)
 * Запустил скрипт firewall.sh
-  ![part5_network](SS/part7_7_1.png)
+  ![part5_network](src/SS/part7_7_1.png)
 * Проверил соединение по TCP для **SNAT**, для этого с ws22 подключил к серверу Apache на r1 командой:
-![part5_network](SS/part7_8.png)
-* Проверить соединение по TCP для **DNAT**, для этого с r1 подключил к серверу Apache на ws22 командой `telnet` (обращаться по адресу r2 и порту 8080)
-![part5_network](SS/part7_8.png)
-
-## Part 8. Дополнительно. Знакомство с **SSH Tunnels**
-
-##### Запустить на r2 фаервол с правилами из Части 7
-##### Запустить веб-сервер **Apache** на ws22 только на localhost (то есть в файле */etc/apache2/ports.conf* изменить строку `Listen 80` на `Listen localhost:80`)
-* Воспользовался *Local TCP forwarding* с ws21 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws21
-![part5_network](SS/part8_1.png)
-![part5_network](SS/part8_2.png)
-
-##### Воспользоваться *Remote TCP forwarding* c ws11 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws11
-![part5_network](SS/part8_3.png)
-![part5_network](SS/part8_4.png)
-##### Для проверки, сработало ли подключение в обоих предыдущих пунктах, перейдите во второй терминал (например, клавишами Alt + F2) и выполните команду:
-`telnet 127.0.0.1 [локальный порт]`
-
+![part5_network](src/SS/part7_8.png)
+* Проверить соединение по TCP для **DNAT**, для этого с r1 подключил к серверу Apache на ws22 командой `telnet      обращаться по адресу r2 и порту 8080
+![part5_network](src/SS/part7_8.png)
